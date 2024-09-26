@@ -1,6 +1,6 @@
 import pandas as pd
 from django.core.management.base import BaseCommand
-from base_learn.models import Word, WordLevel
+from apps.base_learn.models import Word, WordLevel
 
 class Command(BaseCommand):
     help = 'Import words from an XLSX file into the Word model'
@@ -17,6 +17,9 @@ class Command(BaseCommand):
         for index, row in df.iterrows():
             word_full = row[0]
             level = row[1]
+
+            if pd.isna(word_full):
+                continue
 
             parts = word_full.split(' ')
             word = parts[0]
