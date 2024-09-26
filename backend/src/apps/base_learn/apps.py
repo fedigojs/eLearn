@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class BaseLearnConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "base_learn"
+    name = "apps.base_learn"
