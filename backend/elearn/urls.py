@@ -17,11 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ninja import NinjaAPI
-from src.apps.api.v1.base_learn.get_words import router as base_learn_router
+from apps.api.v1.base_learn.get_words import router as get_words_router
+from apps.api.v1.base_learn.get_word_by_id import router as get_word_by_id_router
+from apps.api.v1.base_learn.get_words_to_learn import router as get_words_to_learn_router
+from apps.api.v1.base_learn.mark_word_as_learned import router as mark_word_as_learned_router
+from apps.api.v1.exercises.check_translation import router as check_translation_router
 
 api = NinjaAPI()
 
-api.add_router("/base_learn", base_learn_router)
+api.add_router("/base_learn", get_words_router)
+api.add_router("/base_learn", get_word_by_id_router)
+api.add_router("/base_learn", get_words_to_learn_router)
+api.add_router("/base_learn", mark_word_as_learned_router)
+api.add_router("/exercises", check_translation_router)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
